@@ -1,4 +1,4 @@
-import dotenv from "dotenv"; // eslint-disable-line import/no-import-module-exports
+const dotenv = require("dotenv");
 
 dotenv.config();
 

@@ -1,0 +1,25 @@
+{
+    "compilerOptions": {
+      "lib": ["es5", "es6", "dom"],
+      "target": "ES6",
+      "module": "CommonJS",
+      "moduleResolution": "node",
+      "emitDecoratorMetadata": true,
+      "experimentalDecorators": true,
+      "esModuleInterop": true,
+      "skipLibCheck": true 
+    },
+    "exclude": ["./node_modules",
+      "./.sequlizerc",
+      "src/models/index.ts",
+    ],
+    "include": [
+      "src/**/*.ts", 
+      "migrations/client.ts",
+      "src/models/index.ts",
+      "tests",
+      "src/database/migrations/*", 
+      "src/config/config.js",
+    ],
+  }
+  
