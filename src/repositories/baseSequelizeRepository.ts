@@ -1,21 +1,25 @@
-class BaseSequelizeRepository{
+import { BaseSequelizeRepositoryInterface } from "./interfaces/baseSequelizeRepositoryInterface";
+
+export class BaseSequelizeRepository
+  implements BaseSequelizeRepositoryInterface
+{
   constructor(private model: any) {
     this.model = model;
   }
 
-  async getAll() {
+  async getAll(): Promise<object> {
     return this.model.findAll();
   }
 
-  async findById(id: string) {
+  async findById(id: string): Promise<any | null> {
     return this.model.findByPk(id);
   }
 
-  async create(data: any, trans = {}) {
+  async create(data: any, trans = {}): Promise<object> {
     return this.model.create(data, trans);
   }
 
-  async update(id: string, data: object) {
+  async update(id: string, data: object): Promise<object> {
     return this.model
       .update(data, {
         where: { id },
@@ -23,7 +27,7 @@ class BaseSequelizeRepository{
       .then(() => this.findById(id));
   }
 
-  async delete(id: string, attributes: object) {
+  async delete(id: string, attributes: object): Promise<any> {
     const record = await this.findById(id);
     // if (!record) {
     //   throw new ApiError(400, `Record with id ${id} not found.`);
@@ -32,7 +36,7 @@ class BaseSequelizeRepository{
     return record.destroy(attributes);
   }
 
-  async findOne(attributes: object, includes = {}) {
+  async findOne(attributes: object, includes = {}): Promise<object> {
     const record = await this.model.findOne({
       where: attributes,
       include: includes,
@@ -45,7 +49,7 @@ class BaseSequelizeRepository{
     attributes: object,
     orderAttributes = [["id", "DESC"]],
     queryOptions = {}
-  ) {
+  ): Promise<object> {
     const record = await this.model.findAll({
       where: attributes,
       order: orderAttributes,
@@ -54,7 +58,10 @@ class BaseSequelizeRepository{
     return record;
   }
 
-  async bulkCreate(data: object, updateOnDuplicateFields = []) {
+  async bulkCreate(
+    data: object,
+    updateOnDuplicateFields = []
+  ): Promise<object> {
     if (updateOnDuplicateFields.length > 0) {
       return await this.model.bulkCreate(data, {
         updateOnDuplicate: updateOnDuplicateFields,
@@ -64,9 +71,7 @@ class BaseSequelizeRepository{
     return await this.model.bulkCreate(data);
   }
 
-  async bulkDelete(attributes: object) {
+  async bulkDelete(attributes: object): Promise<object> {
     return await this.model.destroy(attributes);
   }
 }
-
-export default BaseSequelizeRepository;
