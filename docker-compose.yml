@@ -1,0 +1,13 @@
+version: '3.8'
+services:
+  restify-sample-project:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: restify-sample-project:latest
+    container_name: restify-sample-project
+    ports:
+      - "3001:3001"
+    # You can add other environment variables if needed
+    # environment:
+    #   - NODE_ENV=production

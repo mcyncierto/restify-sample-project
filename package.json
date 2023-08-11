@@ -5,6 +5,7 @@
   "main": "index.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "NODE_ENV=$(grep NODE_ENV .env | cut -d '=' -f2) sequelize db:create; sequelize db:migrate; sequelize db:seed:all; ts-node src/index.ts",
     "dev": "nodemon --exec ts-node --watch src src/index.ts"
   },
   "keywords": [],
