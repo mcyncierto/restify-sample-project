@@ -1,5 +1,6 @@
 import models from "../models";
 import { TaskRepository } from "../repositories/taskRepository";
+import { Task } from "../helpers/types/taskType";
 
 const { Task } = models;
 const taskRepository = new TaskRepository(Task);
@@ -9,7 +10,7 @@ class TaskService {
     title: string;
     description: string;
     createdBy: string;
-  }) {
+  }): Promise<Task> {
     const { title, description, createdBy } = attributes;
 
     const taskData = {

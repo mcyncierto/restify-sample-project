@@ -15,7 +15,7 @@ export class BaseSequelizeRepository
     return this.model.findByPk(id);
   }
 
-  async create(data: any, trans = {}): Promise<object> {
+  async create(data: object, trans = {}): Promise<any> {
     return this.model.create(data, trans);
   }
 

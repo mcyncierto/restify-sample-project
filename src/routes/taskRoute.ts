@@ -11,6 +11,6 @@ export class TaskRoute implements Routes {
   }
 
   private async createTask(req: Request, res: Response): Promise<void> {
-    res.send(await TaskController.create(req, res));
+    return await TaskController.create(req, res);
   }
 }
