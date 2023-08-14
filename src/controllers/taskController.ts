@@ -1,6 +1,6 @@
 import { Request, Response } from "restify";
 import TaskService from "../services/taskService";
-import TaskTransformer from "../helpers/transformers/taskTransformer";
+import { TaskTransformer } from "../helpers/transformers/taskTransformer";
 
 class TaskController {
   static async create(req: Request, res: Response): Promise<void> {

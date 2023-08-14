@@ -1,6 +1,6 @@
 import { Task } from "../types/taskType";
 
-class TaskTransformer {
+export class TaskTransformer {
   static resource(
     item: Task,
     isCollection: boolean = false,
@@ -9,8 +9,8 @@ class TaskTransformer {
     let returnData = {};
 
     if (fields.length > 0) {
-      Object.values(fields).forEach((field: string) => {
-        returnData[field] = item[field];
+      Object.values<string>(fields).forEach((field: string) => {
+        (returnData as any)[field] = (item as any)[field];
       });
     } else {
       returnData = {
@@ -33,5 +33,3 @@ class TaskTransformer {
     };
   }
 }
-
-export default TaskTransformer;

@@ -5,7 +5,7 @@ import { ROUTES } from "../routes/index";
 import restifySwaggerJsdoc from "restify-swagger-jsdoc";
 
 export class ApiServer implements HttpServer {
-  private restify: Server;
+  private restify!: Server;
 
   public get(url: string, requestHandler: RequestHandler): void {
     this.addRoute("get", url, requestHandler);
@@ -54,6 +54,8 @@ export class ApiServer implements HttpServer {
       apis: ["./src/swaggerDocs/*.ts"],
     });
 
+    this.handleExceptions();
+
     return this.restify;
   }
 
@@ -71,5 +73,13 @@ export class ApiServer implements HttpServer {
 
   private addRouteIndex(): void {
     ROUTES.forEach((route) => route.initialize(this));
+  }
+
+  public handleExceptions(): Server {
+    this.restify.on("ValidationException", function (req, res, err) {
+      res.send(400, err);
+    });
+
+    return this.restify;
   }
 }
