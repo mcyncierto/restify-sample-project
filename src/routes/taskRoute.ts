@@ -18,8 +18,9 @@ export class TaskRoute implements Routes {
     res: Response,
     next: Next
   ): Promise<void> {
-    await CreateTaskValidator.validate(req, res, next);
-
-    return await TaskController.create(req, res);
+    const isValid = await CreateTaskValidator.validate(req, res, next);
+    if (isValid) {
+      return await TaskController.create(req, res);
+    }
   }
 }

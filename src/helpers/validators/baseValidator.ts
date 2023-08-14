@@ -8,19 +8,23 @@ export class BaseValidator {
     req: Request,
     res: Response,
     next: Next
-  ): Promise<void> {
+  ): Promise<boolean | undefined> {
     try {
       schema.parse({
         body: req.body,
         query: req.query,
         params: req.params,
       });
+
+      return true;
     } catch (error: any) {
       if (error instanceof z.ZodError) {
-        return next(new ValidationException(error));
+        next(new ValidationException(error));
       } else {
         throw error;
       }
+
+      return false;
     }
   }
 }

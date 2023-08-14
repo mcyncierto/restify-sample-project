@@ -7,7 +7,7 @@ export class CreateTaskValidator {
     req: Request,
     res: Response,
     next: Next
-  ): Promise<void> {
+  ): Promise<boolean | undefined> {
     const schema = z.object({
       body: z.object({
         title: z

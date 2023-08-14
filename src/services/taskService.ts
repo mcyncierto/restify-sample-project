@@ -6,6 +6,17 @@ const { Task } = models;
 const taskRepository = new TaskRepository(Task);
 
 class TaskService {
+  /**
+   * Creates a new task.
+   *
+   * @param {object} attributes - The attributes of the task.
+   * @param {string} attributes.title - The title of the task.
+   * @param {string} attributes.description - The description of the task.
+   * @param {string} attributes.createdBy - The creator of the task.
+   * @returns {Promise<Task>} A Promise that resolves with the created task.
+   *
+   * @throws {Error} Throws an error if the task creation fails.
+   */
   static async create(attributes: {
     title: string;
     description: string;
