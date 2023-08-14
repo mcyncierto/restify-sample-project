@@ -47,11 +47,11 @@ export class ApiServer implements HttpServer {
     this.addRouteIndex();
 
     restifySwaggerJsdoc.createSwaggerPage({
-      title: "TTPR Swagger API documentation",
+      title: "Restify Sample Project Swagger API documentation",
       version: "v1.0",
       server: this.restify,
       path: "/api-docs",
-      apis: ["./src/swaggerDocs/*.ts"],
+      apis: ["./src/api-docs/*.ts"],
     });
 
     this.handleExceptions();
