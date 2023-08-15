@@ -26,7 +26,7 @@ class TaskService {
 
     const taskData = {
       title: title.trim(),
-      description: description ?? "",
+      description: description.trim() ?? "",
       createdBy,
     };
 

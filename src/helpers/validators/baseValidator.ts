@@ -19,12 +19,10 @@ export class BaseValidator {
       return true;
     } catch (error: any) {
       if (error instanceof z.ZodError) {
-        next(new ValidationException(error));
+        return Promise.reject(new ValidationException(error));
       } else {
-        throw error;
+        return Promise.reject(new Error(error));
       }
-
-      return false;
     }
   }
 }

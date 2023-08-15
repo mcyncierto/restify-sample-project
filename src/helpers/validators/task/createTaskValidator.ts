@@ -10,15 +10,9 @@ export class CreateTaskValidator {
   ): Promise<boolean | undefined> {
     const schema = z.object({
       body: z.object({
-        title: z
-          .string({
-            required_error: "Title is required",
-            invalid_type_error: "Title must be a string",
-          })
-          .nonempty({
-            message: "Title is required",
-          })
-          .trim(),
+        title: z.string().trim().nonempty({
+          message: "Title is required",
+        }),
         description: z
           .string()
           .trim()
