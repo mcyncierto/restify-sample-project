@@ -6,8 +6,6 @@ module.exports = {
   testEnvironment: "<rootDir>/tests/config/integration_test_environment.ts",
   testMatch: ["<rootDir>/tests/integration/**/*.ts"],
   setupFilesAfterEnv: ["<rootDir>/tests/config/setup.ts"],
-  testPathIgnorePatterns: [
-    "<rootDir>/tests/integration/healthcheckControllerTest.ts",
-  ],
+  testPathIgnorePatterns: [],
   workerIdleMemoryLimit: "512MB",
 };
