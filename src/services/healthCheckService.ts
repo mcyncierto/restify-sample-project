@@ -4,15 +4,15 @@ const { sequelize } = models;
 
 class HealthCheckService {
   static async healthCheck() {
-    return { status: "ok" };
+    return { "app status": "ok" };
   }
 
   static async healthCheckDb() {
     try {
       await sequelize.authenticate();
-      return { db: "ok" };
+      return { "db status": "ok" };
     } catch (error) {
-      return { db: "error" };
+      return { "db status": "error" };
     }
   }
 }

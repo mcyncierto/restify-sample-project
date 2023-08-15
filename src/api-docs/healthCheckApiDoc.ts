@@ -13,8 +13,12 @@
  *    description: Returns the current state of api
  *    tags: [Healthcheck]
  *    responses:
- *      '200':
+ *      200:
  *        description: Returns current state of api
+ *        examples:
+ *          application/json: {
+              "app status": "ok"
+            }
  */
 
 /**
@@ -25,6 +29,10 @@
  *    description: Returns the current state of database
  *    tags: [Healthcheck]
  *    responses:
- *      '200':
+ *      200:
  *        description: Returns current state of database
+ *        examples:
+ *          application/json: {
+              "db status": "ok"
+            }
  */

@@ -10,14 +10,14 @@ describe("healthCheck Service", () => {
   describe("healthCheck function", () => {
     it('should return { status: "ok" }', async () => {
       const result = await HealthCheckService.healthCheck();
-      expect(result).toEqual({ status: "ok" });
+      expect(result).toEqual({ "app status": "ok" });
     });
   });
 
   describe("healthCheckDb function", () => {
     it('should return { db: "ok" }', async () => {
       const result = await HealthCheckService.healthCheckDb();
-      expect(result).toEqual({ db: "ok" });
+      expect(result).toEqual({ "db status": "ok" });
     });
   });
 });
